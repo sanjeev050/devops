@@ -25,6 +25,7 @@ pipeline {
 				echo "BUILD_URL - $env.BUILD_URL"
 			}
 		}
+
 		stage('Compile') {
 			steps {
 				sh "mvn clean compile"
@@ -68,16 +69,17 @@ pipeline {
 				}
 			}
 		}
-		post {
-			always {
-				echo 'Im awesome. I run always'
-			}
-			success {
-				echo 'I run when you are successful'
-			}
-			failure {
-				echo 'I run when you fail'
-			}
+	}
+
+	post {
+		always {
+			echo 'Im awesome. I run always'
+		}
+		success {
+			echo 'I run when you are successful'
+		}
+		failure {
+			echo 'I run when you fail'
 		}
 	}
 }
