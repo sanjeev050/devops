@@ -47,10 +47,8 @@ pipeline {
 			steps {
 				sh "mvn package -DskipTests"
 			}
-	    }					
-	}
-
-
+	    }
+		
     stage('Build Docker Image') {
 		steps {
 			// "docker built -t sanjeevnadela/currency-exchange-devops:$env.BUILD_TAG"
