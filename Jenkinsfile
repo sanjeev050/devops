@@ -50,15 +50,14 @@ pipeline {
 			}
 	    }
 		
-       stage('Build Docker Image') {
-		   steps {
+        stage('Build Docker Image') {
+		    steps {
 			   //"dpcker built -t sanjeevnadela/currency-exchange-devops:$env.BUILD_TAG"
-			   script {
+			    script {
 				   dockerImage = docker.built("sanjeevnadela/currency-exchnage-devops:${env.BUILD_TAG}")
-			   }
-		   }
-		   
-	   }
+			    }
+		    }
+		}
 		
 	   stage('Push Docker Image') {
 		   steps {
