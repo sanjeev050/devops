@@ -51,9 +51,9 @@ pipeline {
 		
         stage('Build Docker Image') {
 		    steps {
-			   //"docker built -t sanjeevnadela/devops:$env.BUILD_TAG"
+			   //"docker build -t sanjeevnadela/devops:$env.BUILD_TAG"
 			    script {
-				   dockerImage = docker.built("sanjeevnadela/devops:${env.BUILD_TAG}")
+				   dockerImage = docker.build("sanjeevnadela/devops:${env.BUILD_TAG}")
 			    }
 		    }
 		}
