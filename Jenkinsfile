@@ -52,9 +52,9 @@ pipeline {
 		
         stage('Build Docker Image') {
 		    steps {
-			   //"docker built -t sanjeevnadela/currency-exchange-devops:$env.BUILD_TAG"
+			   //"docker built -t sanjeevnadela/devops:$env.BUILD_TAG"
 			    script {
-				   dockerImage = docker.built("sanjeevnadela/currency-exchnage-devops:${env.BUILD_TAG}")
+				   dockerImage = docker.built("sanjeevnadela/devops:${env.BUILD_TAG}")
 			    }
 		    }
 		}
