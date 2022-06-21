@@ -48,13 +48,13 @@ pipeline {
 			steps {
 				sh "mvn package -DskipTests"
 			}
-		}
+	    }	
 
     stage('Build Docker Image') {
 		steps {
 			// "docker built -t sanjeevnadela/currency-exchange-devops:$env.BUILD_TAG"
 			script {
-				docker.built("sanjeevnadela/currency-exchange-devops:${env.BUILD_TAG}")
+				dockerImage = docker.built("sanjeevnadela/currency-exchange-devops:${env.BUILD_TAG}")
 			}
 		}
 	}
@@ -64,7 +64,7 @@ pipeline {
 			script {
 				docker.withRegistry('', 'dockerhub') {
 					dockerImage.push();
-				dockerImage.push('latest');
+				    dockerImage.push('latest');
 				}
 			}
 		}
