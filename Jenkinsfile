@@ -43,23 +43,24 @@ pipeline {
 			}
 		}
 		
-	stage('Package') {
+	    stage('Package') {
 			steps {
 				sh "mvn package -DskipTests"
 			}
 	    }
 		
-    stage('Build Docker Image') {
-		steps {
-			// "docker built -t sanjeevnadela/currency-exchange-devops:$env.BUILD_TAG"
-			script {
-				dockerImage = docker.built("sanjeevnadela/currency-exchange-devops:${env.BUILD_TAG}")
-			}
-		}
-	}
-
-	stage('Push Docker Image') {
-		steps {
+       stage('Build Docker Image') {
+		   steps {
+			   //"dpcker built -t sanjeevnadela/currency-exchange-devops:$env.BUILD_TAG"
+			   script {
+				   dockerImage = docker.built("sanjeevnadela/currency-exchnage-devops:${env.BUILD_TAG}")
+			   }
+		   }
+		   
+	   }
+		
+	   stage('Push Docker Image') {
+		   steps {
 			script {
 				docker.withRegistry('', 'dockerhub') {
 					dockerImage.push();
@@ -67,7 +68,6 @@ pipeline {
 				}
 			}
 		}
-	}
 
 	  post {
 		always {
